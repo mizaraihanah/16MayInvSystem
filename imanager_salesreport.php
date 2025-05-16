@@ -517,8 +517,6 @@ $conn->close();
                 <div class="filter-buttons">
                     <button type="submit" class="filter-btn apply-btn"><i class="fas fa-search"></i> Apply Filters</button>
                     <button type="button" class="filter-btn reset-btn" id="resetFilters"><i class="fas fa-sync"></i> Reset Filters</button>
-                    <button type="button" class="filter-btn export-btn" id="exportPDF"><i class="fas fa-file-pdf"></i> Export PDF</button>
-                    <button type="button" class="filter-btn export-btn" id="exportExcel"><i class="fas fa-file-excel"></i> Export Excel</button>
                 </div>
             </form>
         </div>
