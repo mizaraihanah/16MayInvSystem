@@ -298,54 +298,6 @@ function generateColors(count) {
     }
 }
 
-// Function to export as PDF
-function exportPDF() {
-    // Get current filter values for URL parameters
-    const dateFrom = document.getElementById('date_from').value;
-    const dateTo = document.getElementById('date_to').value;
-    const category = document.getElementById('category').value;
-    const product = document.getElementById('product').value;
-    const paymentMethod = document.getElementById('payment_method').value;
-    
-    // Build URL
-    let url = 'export_sales_report.php?format=pdf';
-    if (dateFrom) url += `&date_from=${dateFrom}`;
-    if (dateTo) url += `&date_to=${dateTo}`;
-    if (category) url += `&category=${category}`;
-    if (product) url += `&product=${product}`;
-    if (paymentMethod) url += `&payment_method=${paymentMethod}`;
-    
-    // Open in new window
-    window.open(url, '_blank');
-    
-    // Show success toast
-    showToast('PDF export started. Your download will begin shortly.', 'success');
-}
-
-// Function to export as Excel
-function exportExcel() {
-    // Get current filter values for URL parameters
-    const dateFrom = document.getElementById('date_from').value;
-    const dateTo = document.getElementById('date_to').value;
-    const category = document.getElementById('category').value;
-    const product = document.getElementById('product').value;
-    const paymentMethod = document.getElementById('payment_method').value;
-    
-    // Build URL
-    let url = 'export_sales_report.php?format=excel';
-    if (dateFrom) url += `&date_from=${dateFrom}`;
-    if (dateTo) url += `&date_to=${dateTo}`;
-    if (category) url += `&category=${category}`;
-    if (product) url += `&product=${product}`;
-    if (paymentMethod) url += `&payment_method=${paymentMethod}`;
-    
-    // Open in new window
-    window.open(url, '_blank');
-    
-    // Show success toast
-    showToast('Excel export started. Your download will begin shortly.', 'success');
-}
-
 // Function to show toast notification
 function showToast(message, type = 'success') {
     // Remove existing toast if any
@@ -376,4 +328,20 @@ function showToast(message, type = 'success') {
             toast.remove();
         }, 300);
     }, 3000);
+}
+
+// Initialize event listeners
+function initEventListeners() {
+    // Reset filters button
+    const resetFiltersBtn = document.getElementById('resetFilters');
+    if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', function() {
+            document.getElementById('date_from').value = '';
+            document.getElementById('date_to').value = '';
+            document.getElementById('category').value = '';
+            document.getElementById('product').value = '';
+            document.getElementById('payment_method').value = '';
+            document.getElementById('filterForm').submit();
+        });
+    }
 }
