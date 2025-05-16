@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 07:05 PM
+-- Generation Time: May 16, 2025 at 06:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -211,6 +211,101 @@ INSERT INTO `product_categories` (`category_id`, `category_name`, `description`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sales_data`
+--
+
+CREATE TABLE `sales_data` (
+  `sale_id` int(11) NOT NULL,
+  `sale_date` date NOT NULL,
+  `product_id` varchar(10) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `quantity_sold` int(11) NOT NULL,
+  `unit_price` decimal(10,2) NOT NULL,
+  `total_amount` decimal(10,2) NOT NULL,
+  `payment_method` enum('Cash','Card','Online') NOT NULL DEFAULT 'Cash',
+  `recorded_by` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `sales_data`
+--
+
+INSERT INTO `sales_data` (`sale_id`, `sale_date`, `product_id`, `category_id`, `quantity_sold`, `unit_price`, `total_amount`, `payment_method`, `recorded_by`, `created_at`) VALUES
+(1, '2025-05-01', 'PROD0001', 1, 12, 5.50, 66.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(2, '2025-05-01', 'PROD0002', 1, 8, 7.00, 56.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(3, '2025-05-01', 'PROD0005', 4, 15, 2.50, 37.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(4, '2025-05-02', 'PROD0001', 1, 15, 5.50, 82.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(5, '2025-05-02', 'PROD0002', 1, 5, 7.00, 35.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(6, '2025-05-02', 'PROD0005', 4, 10, 2.50, 25.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(7, '2025-05-03', 'PROD0001', 1, 20, 5.50, 110.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(8, '2025-05-03', 'PROD0002', 1, 12, 7.00, 84.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(9, '2025-05-03', 'PROD0005', 4, 22, 2.50, 55.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(10, '2025-05-04', 'PROD0001', 1, 18, 5.50, 99.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(11, '2025-05-04', 'PROD0002', 1, 9, 7.00, 63.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(12, '2025-05-04', 'PROD0005', 4, 25, 2.50, 62.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(13, '2025-05-05', 'PROD0001', 1, 22, 5.50, 121.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(14, '2025-05-05', 'PROD0002', 1, 14, 7.00, 98.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(15, '2025-05-05', 'PROD0005', 4, 18, 2.50, 45.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(16, '2025-05-06', 'PROD0001', 1, 16, 5.50, 88.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(17, '2025-05-06', 'PROD0002', 1, 10, 7.00, 70.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(18, '2025-05-06', 'PROD0005', 4, 20, 2.50, 50.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(19, '2025-05-07', 'PROD0001', 1, 25, 5.50, 137.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(20, '2025-05-07', 'PROD0002', 1, 15, 7.00, 105.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(21, '2025-05-07', 'PROD0005', 4, 30, 2.50, 75.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(22, '2025-05-08', 'PROD0001', 1, 20, 5.50, 110.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(23, '2025-05-08', 'PROD0002', 1, 12, 7.00, 84.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(24, '2025-05-08', 'PROD0005', 4, 25, 2.50, 62.50, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(25, '2025-05-09', 'PROD0001', 1, 22, 5.50, 121.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(26, '2025-05-09', 'PROD0002', 1, 18, 7.00, 126.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(27, '2025-05-09', 'PROD0005', 4, 15, 2.50, 37.50, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(28, '2025-05-10', 'PROD0001', 1, 28, 5.50, 154.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(29, '2025-05-10', 'PROD0002', 1, 20, 7.00, 140.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(30, '2025-05-10', 'PROD0005', 4, 35, 2.50, 87.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(31, '2025-05-11', 'PROD0001', 1, 14, 5.50, 77.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(32, '2025-05-11', 'PROD0002', 1, 11, 7.00, 77.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(33, '2025-05-11', 'PROD0005', 4, 17, 2.50, 42.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(34, '2025-05-12', 'PROD0001', 1, 16, 5.50, 88.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(35, '2025-05-12', 'PROD0002', 1, 9, 7.00, 63.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(36, '2025-05-12', 'PROD0005', 4, 20, 2.50, 50.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(37, '2025-05-13', 'PROD0001', 1, 18, 5.50, 99.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(38, '2025-05-13', 'PROD0002', 1, 15, 7.00, 105.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(39, '2025-05-13', 'PROD0005', 4, 25, 2.50, 62.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(40, '2025-05-14', 'PROD0001', 1, 24, 5.50, 132.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(41, '2025-05-14', 'PROD0002', 1, 13, 7.00, 91.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(42, '2025-05-14', 'PROD0005', 4, 28, 2.50, 70.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(43, '2025-05-15', 'PROD0001', 1, 21, 5.50, 115.50, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(44, '2025-05-15', 'PROD0002', 1, 19, 7.00, 133.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(45, '2025-05-15', 'PROD0005', 4, 32, 2.50, 80.00, 'Online', 'staff01', '2025-05-16 04:03:28'),
+(46, '2025-05-16', 'PROD0001', 1, 26, 5.50, 143.00, 'Cash', 'staff01', '2025-05-16 04:03:28'),
+(47, '2025-05-16', 'PROD0002', 1, 17, 7.00, 119.00, 'Card', 'staff01', '2025-05-16 04:03:28'),
+(48, '2025-05-16', 'PROD0005', 4, 22, 2.50, 55.00, 'Cash', 'staff01', '2025-05-16 04:03:28');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `sales_report_view`
+-- (See below for the actual view)
+--
+CREATE TABLE `sales_report_view` (
+`sale_id` int(11)
+,`sale_date` date
+,`product_id` varchar(10)
+,`product_name` varchar(100)
+,`category_id` int(11)
+,`category_name` varchar(50)
+,`quantity_sold` int(11)
+,`unit_price` decimal(10,2)
+,`total_amount` decimal(10,2)
+,`payment_method` enum('Cash','Card','Online')
+,`recorded_by` varchar(50)
+,`recorded_by_name` varchar(255)
+,`created_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -239,6 +334,15 @@ INSERT INTO `users` (`userID`, `username`, `fullName`, `email`, `phoneNumber`, `
 ('staff001', 'staff1', 'twinklebaee', 'hafi@gmail.com', '1234567890', 'dd', '$2y$10$9uuJ3NvCp0blEgaEVRMXNuylGP60gaHPADvZTzOUNylJCttfEgfRq', 'Inventory Manager', '2025-04-12 18:32:19'),
 ('staff01', 'staff01', 'staff', 'mizfansyafie@gmail.com', '0198048301', 'KUBANG PASU', '$2y$10$gga7OddidAqo6of0NkYC5.hKij/r6h5KffKWTvvCT9UWHqInNnJJW', 'Bakery Staff', '2025-04-22 05:23:37'),
 ('yaemiko12', 'yaemiko12', 'yae miko', 'mikomae82@gmail.com', '0198011207', 'tawau', '$2y$10$M86bWJJwiRyumKf4.H.L7.eiUL/6qz0wkxpTXtCVsR5DKyR3mMWRS', 'Inventory Manager', '2025-04-19 09:58:32');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `sales_report_view`
+--
+DROP TABLE IF EXISTS `sales_report_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sales_report_view`  AS SELECT `s`.`sale_id` AS `sale_id`, `s`.`sale_date` AS `sale_date`, `s`.`product_id` AS `product_id`, `p`.`product_name` AS `product_name`, `c`.`category_id` AS `category_id`, `c`.`category_name` AS `category_name`, `s`.`quantity_sold` AS `quantity_sold`, `s`.`unit_price` AS `unit_price`, `s`.`total_amount` AS `total_amount`, `s`.`payment_method` AS `payment_method`, `s`.`recorded_by` AS `recorded_by`, `u`.`fullName` AS `recorded_by_name`, `s`.`created_at` AS `created_at` FROM (((`sales_data` `s` join `products` `p` on(`s`.`product_id` = `p`.`product_id`)) join `product_categories` `c` on(`s`.`category_id` = `c`.`category_id`)) left join `users` `u` on(`s`.`recorded_by` = `u`.`userID`)) ORDER BY `s`.`sale_date` DESC, `s`.`sale_id` DESC ;
 
 --
 -- Indexes for dumped tables
@@ -296,6 +400,16 @@ ALTER TABLE `product_categories`
   ADD UNIQUE KEY `category_name` (`category_name`);
 
 --
+-- Indexes for table `sales_data`
+--
+ALTER TABLE `sales_data`
+  ADD PRIMARY KEY (`sale_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `recorded_by` (`recorded_by`),
+  ADD KEY `sale_date` (`sale_date`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -338,6 +452,12 @@ ALTER TABLE `product_categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `sales_data`
+--
+ALTER TABLE `sales_data`
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -378,6 +498,14 @@ ALTER TABLE `password_reset_requests`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `product_categories` (`category_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sales_data`
+--
+ALTER TABLE `sales_data`
+  ADD CONSTRAINT `sales_data_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sales_data_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `product_categories` (`category_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sales_data_ibfk_3` FOREIGN KEY (`recorded_by`) REFERENCES `users` (`userID`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
